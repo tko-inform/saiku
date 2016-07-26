@@ -29,7 +29,7 @@ var Settings = {
     DIMENSION_SHOW_ALL: true,
     DIMENSION_SHOW_REDUCED: false,
     ERROR_LOGGING: false,
-    I18N_LOCALE: "en",
+    I18N_LOCALE: "ru",
     // number of erroneous ajax calls in a row before UI cant recover
     ERROR_TOLERANCE: 3,
     QUERY_PROPERTIES: {
@@ -240,12 +240,12 @@ if ($.blockUI) {
 
 }
 
-if (window.location.hostname && (window.location.hostname == "try.meteorite.bi" )) {
+//if (window.location.hostname && (window.location.hostname == "try.meteorite.bi" )) {
     Settings.USERNAME = "admin";
     Settings.PASSWORD = "admin";
     Settings.DEMO = true;
     Settings.UPGRADE = false;
-}
+//}
 
 var isIE = (function(){
     var undef, v = 3;

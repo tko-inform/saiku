@@ -89,42 +89,25 @@ public class SessionService implements ISessionService {
 	 * @see org.saiku.web.service.ISessionService#login(javax.servlet.http.HttpServletRequest, java.lang.String, java.lang.String)
 	 */
 	public Map<String, Object> login(HttpServletRequest req, String username, String password ) throws Exception {
-		Object sl = null;
-		String notice = null;
-
-		try {
-			sl = l.getLicense();
-		} catch (Exception e) {
-			throw new LicenseException("Could not find license, please get a free license from http://licensing"
-									   + ".meteorite.bi. You can upload it at http://server:8080/upload.html");
+		if (authenticationManager != null) {
+			authenticate(req, username, password);
 		}
+		if (SecurityContextHolder.getContext() != null && SecurityContextHolder.getContext().getAuthentication() != null) {
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-		if (sl != null) {
-
-			l.validateLicense();
-
-			if (l.getLicense() instanceof SaikuLicense2) {
-
-				if (authenticationManager != null) {
-					authenticate(req, username, password);
-				}
-				if (SecurityContextHolder.getContext() != null
-					&& SecurityContextHolder.getContext().getAuthentication() != null) {
-					Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
-					if (authorisationPredicate.isAuthorised(auth)) {
-						Object p = auth.getPrincipal();
-						createSession(auth, username, password);
-						return sessionHolder.get(p);
-					} else {
-						log.info(username + " failed authorisation. Rejecting login");
-						throw new RuntimeException("Authorisation failed for: " + username);
-					}
-				}
-				return new HashMap<>();
+			if(authorisationPredicate.isAuthorised(auth))
+			{
+				Object p = auth.getPrincipal();
+				createSession(auth, username, password);
+				return sessionHolder.get(p);
+			}
+			else
+			{
+				log.info(username + " failed authorisation. Rejecting login");
+				throw new RuntimeException("Authorisation failed for: " + username);
 			}
 		}
-			return null;
+		return new HashMap<>();
 	}
 
 	private void createSession(Authentication auth, String username, String password) {

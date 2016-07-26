@@ -115,5 +115,14 @@
   "Zoom into table":"Увеличить",
   "Clear Axis":"Очистить оси",
   "Close This":"Закрыть текущую",
-  "Close Others":"Закрыть остальные"
+  "Close Others": "Закрыть остальные",
+  "Calculated Members:": "Вычисляемые элементы:",
+  "Calculated Member": "Вычисляемый элемент",
+  "Add": "Добавить",
+  "Cancel": "Отменить",
+  "Help": "Справка",
+  "Include": "Включить",
+  "Exclude": "Исключить",
+  "You need to include at least one measure or a level on columns for a valid query.": "Необходимо выбрать по крайней мере одну Меру",
+  "You need to include at least one level on rows for a valid query.": "Необходимо выбрать по крайней мере одно Измерение"
 }
