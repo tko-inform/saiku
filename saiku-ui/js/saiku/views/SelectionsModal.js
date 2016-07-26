@@ -220,7 +220,13 @@ var SelectionsModal = Modal.extend({
 
                 success: function(response, model) {
                                 if (model && model.length > 0) {
-                                    self.available_members = model;
+                                    self.available_members = _.map(model, function(el) {
+                                        return {
+                                                obj: el,
+                                                calc: false
+                                            }
+                                        });
+                                    //self.available_members = model;
                                 }
                                 self.populate();
                             },
