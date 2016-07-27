@@ -24,3 +24,8 @@ saiku-ui/target/
 atlassian-ide-plugin.xml
 osgitests/
 *.log
+.project
+.classpath
+.settings/
+/deploy-remote-test.bat
+/deploy-sauiku-ui.bat
