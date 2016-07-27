@@ -122,7 +122,7 @@
   "Cancel": "Отменить",
   "Help": "Справка",
   "Include": "Включить",
-  "Exclude": "Исключить",
+  "Exclude": "Исключить ",
   "You need to include at least one measure or a level on columns for a valid query.": "Необходимо выбрать по крайней мере одну Меру",
   "You need to include at least one level on rows for a valid query.": "Необходимо выбрать по крайней мере одно Измерение"
 }
